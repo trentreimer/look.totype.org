@@ -26,7 +26,7 @@ navigator.mediaDevices.enumerateDevices().then(devices => {
 /////////////////////////////////////////////////////////////
 
 message.classList.add('middle');
-showMessage('<span class="blink">Loading eye-tracker...</span>');
+showMessage(settings.translations['loading-eye-tracker']);
 
 //hideMessage(); setUpEyeMsg(false); return; // Just show the layout for development purposes
 
@@ -60,8 +60,8 @@ message.addEventListener('click', event => {
 
 let numCalibrationClicks = 5;
 let calibrationClickNum = 0;
-//const calibrationZones = ['middle-left', 'middle-right'];
-const calibrationZones = ['top-left', 'top-right', 'bottom-right', 'bottom-left'];
+const calibrationZones = ['top-left', 'top-right'];
+//const calibrationZones = ['top-left', 'top-right', 'bottom-right', 'bottom-left'];
 //const calibrationZones = ['top-center', 'top-right', 'middle-right', 'bottom-right', 'bottom-center', 'bottom-left', 'middle-left', 'top-left'];
 let calibrationZoneIndex = 0;
 let calibrationTargetMoveTime = 2000; // Time it takes target to move from one position to another in milliseconds
@@ -88,7 +88,7 @@ const calibrationPrecheck = function() {
             if (calibrationPrecheckStart === null) calibrationPrecheckStart = now;
 
             if (calibrationPrecheckStart <= now - 2000) {
-                showMessage('Make sure the camera can see your eyes');
+                showMessage(settings.translations['eyes-must-be-viewable']);
                 if (b.style.borderColor == 'red') c.classList.add('error');
             }
         }
@@ -121,7 +121,7 @@ const calibrateWebgazer = function(callbackFunction = null) {
 const startCalibration = function() {
     document.getElementById('webgazerVideoContainer').classList.remove('error');
 
-    showMessage('Watch the dot');
+    showMessage(settings.translations['watch-calibration-dot']);
 
     // Show the calibration dot
     setTimeout(() => {
@@ -166,7 +166,7 @@ const clickCalibrationTarget = function() {
             // done
             calibrationTarget.className = 'hidden';
             calibrationBackground.classList.add('hidden');
-            showMessage('Thank you!');
+            showMessage(settings.translations['thank-you-exclamation']);
 
             sessionStorage.setItem('calibrated', Math.round(Date.now() / 1000));
 
