@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="stylesheet" href="css/type.css">
         <link rel="stylesheet" href="css/safari.css">
+        <link rel="stylesheet" id="selected-language-stylesheet">
 
         <style type="text/css">
             @import url('https://fonts.googleapis.com/css2?family=DM+Mono&family=Source+Sans+Pro&display=swap');
@@ -45,9 +46,9 @@
 
             <div id="eye-msg-menu-row">
                 <div id="eye-msg-menu">
-                    <div>Speed <select class="interval"><option value="1">1</option><option value="1.25">1.25</option><option value="1.5">1.5</option><option value="2">2</option><option value="2.5">2.5</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="10">10</option></select> seconds</div>
-                    <button class="recalibrate"><i class="fas fa-bullseye"></i> Recalibrate</button>
-                    <button class="copy-text">📋 Copy Text</button>
+                    <div><span class="translate capitalize" data-translate="speed">Speed</span> <select class="interval"><option value="1">1</option><option value="1.25">1.25</option><option value="1.5">1.5</option><option value="2">2</option><option value="2.5">2.5</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="10">10</option></select> <span class="translate capitalize" data-translate="seconds">seconds</span></div>
+                    <button class="recalibrate"><i class="fas fa-bullseye"></i> <span class="translate capitalize" data-translate="recalibrate">Recalibrate</button>
+                    <button class="copy-text">📋 <span class="translate capitalize" data-translate="copy text">Copy Text</span></button>
                     <button class="start-stop" data-action="stop"></button>
                 </div>
             </div>
@@ -55,20 +56,20 @@
 
         <!-- eye controlled dialogs -->
         <div id="stop-dialog" class="eye-dialog" class="hidden">
-            <h2>Are you finished typing?</h2>
+            <h2><span class="translate" data-translate="stop-dialog-question">Are you finished typing?</span></h2>
 
             <div class="eye-dialog-options">
-                <span class="eye-dialog-option" data-action="stop">Yes</span>
-                <span class="eye-dialog-option" data-action="resume">No</span>
+                <span class="eye-dialog-option translate capitalize" data-translate="yes" data-action="stop">Yes</span>
+                <span class="eye-dialog-option translate capitalize" data-translate="no" data-action="resume">No</span>
             </div>
         </div>
 
         <div id="empty-dialog" class="eye-dialog" class="hidden">
-            <h2>Delete all text?</h2>
+            <h2><span class="translate" data-translate="empty-dialog-question">Delete all text?</span></h2>
 
             <div class="eye-dialog-options">
-                <span class="eye-dialog-option" data-action="empty">Yes</span>
-                <span class="eye-dialog-option" data-action="resume">No</span>
+                <span class="eye-dialog-option translate capitalize" data-translate="yes" data-action="empty">Yes</span>
+                <span class="eye-dialog-option translate capitalize" data-translate="no" data-action="resume">No</span>
             </div>
         </div>
 
