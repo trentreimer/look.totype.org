@@ -14,37 +14,9 @@
             .hidden { display: none; }
         </style>
 
+        <script src="js/safari.js"></script>
         <script type="text/javascript">
-            /**
-             * Apple has world-class engineering talent so we can only assume the reason Safari is perenially
-             * behind the competition in supporting W3C standards is because it's not a priority.
-             * Something as fundamental as accurately measuring the available window height is not beyond their
-             * reach and would improve the user interface experience.
-             *
-             * While Apple desktop users can switch browsers, iOS users cannot actually do that.
-             *
-             * iOS runs Safari's rendering and Javascript engines in the background regardless of which browser
-             * interface you are using. i.e. If you are using Chrome or Firefox on iOS you are actually using
-             * Safari with a Chrome or Firefox interface. If that wasn't anti-competitive enough, they actively
-             * disable some APIs when you use those other browsers.
-             *
-             * Safari has done the internet a world of good by breaking Internet Explorer's monopoly.
-             * They should not now be working to mimic it.
-             */
 
-            const safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-            if (safari) {
-                document.documentElement.classList.add('safari');
-            }
-
-            const windowHeight = function() {
-                return safari ? document.body.getBoundingClientRect().height : window.innerHeight;
-            }
-
-            const windowWidth = function() {
-                return safari ? document.body.getBoundingClientRect().width : window.innerWidth;
-            }
         </script>
     </head>
     <body>
@@ -81,7 +53,6 @@
             </div>
         </div>
 
-
         <!-- eye controlled dialogs -->
         <div id="stop-dialog" class="eye-dialog" class="hidden">
             <h2>Are you finished typing?</h2>
@@ -101,9 +72,8 @@
             </div>
         </div>
 
-
-        <script type="text/javascript" src="js/webgazer.js"></script>
-        <script type="text/javascript" src="js/type.js"></script>
+        <script src="js/webgazer.js"></script>
+        <script src="js/type.js" type="module"></script>
 
     </body>
 </html>
