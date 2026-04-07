@@ -29,6 +29,10 @@ input[type="submit"] {
     animation: blink 2s infinite;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
 @keyframes blink {
     0% {
         opacity: 0;
@@ -385,17 +389,17 @@ button, input, select {
     content: '🛑 ';
 }
 
-#eye-msg-menu .start-stop[data-action="stop"]::after {
+/*#eye-msg-menu .start-stop[data-action="stop"]::after {
     content: 'Stop';
-}
+}*/
 
 #eye-msg-menu .start-stop[data-action="start"]::before {
     content: '🟢 ';
 }
 
-#eye-msg-menu .start-stop[data-action="start"]::after {
+/*#eye-msg-menu .start-stop[data-action="start"]::after {
     content: 'Restart';
-}
+}*/
 
 #eye-msg-select {
     margin-right: 10px;
