@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+  <!--!Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+  <!-- Derived from face-smile-wink (solid); features cropped from the face circle and enlarged, the winking eye replaced with an open eye and both eyes looking to the right; recolored for look.totype.org -->
+  <rect width="640" height="640" rx="120" fill="#06c"/>
+  <g transform="translate(325.4 350) scale(1.6) translate(-325.4 -350)">
+    <path fill="#fff" d="M229.4 385.9C249.8 413.9 282.8 432 320 432C357.2 432 390.2 413.9 410.6 385.9C418.4 375.2 433.4 372.8 444.1 380.6C454.8 388.4 457.2 403.4 449.4 414.1C420.3 454 373.2 480 320 480C266.8 480 219.7 454 190.6 414.1C182.8 403.4 185.2 388.4 195.9 380.6C206.6 372.8 221.6 375.2 229.4 385.9z"/>
+    <circle cx="240" cy="272" r="32" fill="#fff"/>
+    <circle cx="400" cy="272" r="32" fill="#fff"/>
+    <circle cx="250" cy="272" r="15" fill="#06c"/>
+    <circle cx="410" cy="272" r="15" fill="#06c"/>
+  </g>
+</svg>

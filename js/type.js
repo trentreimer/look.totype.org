@@ -198,8 +198,7 @@ window.addEventListener('resize', function() {
 document.querySelector('#eye-msg-menu .interval').value = Math.round(settings.charRotationPause / 100) / 10;
 
 document.querySelector('#eye-msg-menu .interval').addEventListener('change', function() {
-    settings.charRotationPause = this.value * 1000;
-    localStorage.setItem('charRotationPause', settings.charRotationPause);
+    updateSetting('charRotationPause', this.value * 1000);
 
     // If the rotation is going make sure it uses the new setting.
     if (document.querySelector('#eye-msg-menu .start-stop[data-action="stop"]')) {

@@ -5,8 +5,24 @@ import { setUpEyeMsg } from './eye-msg-functions.js';
 export const settings = {};
 export const tw = {}; // Typewriter properties
 
+export const storagePrefix = 'look.totype.org';
+
+export function storageKey(name) {
+    return `${storagePrefix}:${name}`;
+}
+
+const localStorageSettings = ['charRotationPause', 'language'];
+
 export async function initSettings() {
-    settings.charRotationPause = parseInt(localStorage.getItem('charRotationPause')) >= 750 ? parseInt(localStorage.getItem('charRotationPause')) : 1500;
+    // Values written before storage keys were namespaced are dropped so a
+    // stale key from another page on this origin can never influence the app.
+    for (const key of ['charRotationPause', 'language']) {
+        localStorage.removeItem(key);
+    }
+
+    const charRotationPause = parseInt(localStorage.getItem(storageKey('charRotationPause')));
+
+    settings.charRotationPause = charRotationPause >= 750 ? charRotationPause : 1500;
 
     tw.lastSelectedValueIsWord = false;
 
@@ -29,9 +45,7 @@ export async function initSettings() {
 export function updateSetting(settingName, settingValue) {
     settings[settingName] = settingValue;
 
-    const localStorageSettings = ['longBlinkTime', 'charRotationPause'];
-
     if (localStorageSettings.includes(settingName)) {
-        localStorage.setItem(settingName, settingValue);
+        localStorage.setItem(storageKey(settingName), settingValue);
     }
 }
