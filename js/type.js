@@ -3,6 +3,7 @@ import { settings, tw, initSettings, updateSetting } from './settings.js';
 import { copyText, clearText, cutText } from './text-functions.js';
 import { eyeFollower } from './eye-follower.js';
 import { startEyeMsg, stopEyeMsg } from './eye-msg-functions.js';
+import { startCamera } from './camera.js';
 
 await initSettings();
 
@@ -215,12 +216,14 @@ document.querySelectorAll('#eye-msg-menu .recalibrate').forEach(e => { e.addEven
     clearInterval(tw.eyeMsgInterval);
     document.querySelectorAll('#keyboard .highlight').forEach(e => { e.classList.remove('highlight'); });
 
-    calibrateWebgazer(function() {
-        tw.eyeMsgCharsetIndex = 0;
-        tw.eyeMsgCharIndex = 0;
-        tw.eyeMsgSelectMode = 'charset';
-        webgazer.setGazeListener(eyeFollower);
-        tw.eyeMsgInterval = setInterval(setEyeMsgFocus, settings.charRotationPause);
+    startCamera().then(function() {
+        calibrateWebgazer(function() {
+            tw.eyeMsgCharsetIndex = 0;
+            tw.eyeMsgCharIndex = 0;
+            tw.eyeMsgSelectMode = 'charset';
+            webgazer.setGazeListener(eyeFollower);
+            tw.eyeMsgInterval = setInterval(setEyeMsgFocus, settings.charRotationPause);
+        });
     });
 })});
 

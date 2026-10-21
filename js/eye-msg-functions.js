@@ -3,6 +3,7 @@ import { setEyeMsgTextBoxHeight } from './sizing.js';
 import { eyeDialog, selectEyeDialogValue } from './eye-dialogs.js';
 import { eyeFollower } from './eye-follower.js';
 import { showMessage, hideMessage } from './messages.js';
+import { startCamera, stopCamera } from './camera.js';
 
 function recordCompletedWord(text) {
     const engine = settings.suggestEngine;
@@ -112,7 +113,12 @@ export function setEyeMsgFocus() {
 export function startEyeMsg() {
     hideMessage();
     setUpEyeMsg();
-    webgazer.setGazeListener(eyeFollower);
+
+    startCamera().then(() => {
+        if (document.querySelector('#eye-msg-menu .start-stop[data-action="stop"]')) {
+            webgazer.setGazeListener(eyeFollower);
+        }
+    });
 
     document.querySelectorAll('#eye-msg-menu .start-stop').forEach(e => { e.setAttribute('data-action', 'stop'); });
 }
@@ -126,6 +132,7 @@ export function stopEyeMsg() {
         document.querySelectorAll('#keyboard [data-character="🛑"], #keyboard [data-character="Stop"], #keyboard [data-character="Done"]').forEach(e => { e.classList.add('highlight'); });
 
         webgazer.clearGazeListener();
+        stopCamera();
     } catch (error) {
         console.log(error);
     }
